@@ -23,9 +23,7 @@ Examples of unacceptable behavior:
 
 ## Enforcement
 
-Instances of unacceptable behavior may be reported by contacting the project maintainers. All complaints will be reviewed and investigated and will result in a response deemed appropriate to the circumstances.
-
-Project maintainers who do not follow or enforce this Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+Instances of unacceptable behavior may be reported by contacting the maintainer directly at mathieu@souflis.fr. All complaints will be reviewed and investigated and will result in a response deemed appropriate to the circumstances.
 
 ## Attribution
 

@@ -2,14 +2,13 @@
 # Optional pre-push hook — runs before every `git push`.
 # Activate with: git config core.hooksPath .githooks
 #
-# Uncomment and adapt the checks below to match your project's tooling.
-# Remove checks that don't apply. Keep this hook fast — slow hooks get bypassed.
+# Keep this hook fast — slow hooks get bypassed. Tests and build run in CI.
 
-# echo "Running tests before push..."
-# your-test-command || exit 1
+echo "Running cargo fmt --check..."
+cargo fmt --check || exit 1
 
-# echo "Running build check..."
-# your-build-command || exit 1
+echo "Running cargo clippy..."
+cargo clippy --all-targets --all-features -- -D warnings || exit 1
 
 # ── Documentation TODOs ─────────────────────────────────────────────────
 # Non-blocking: lists template placeholder docs (docs/**/todo_*.md) that

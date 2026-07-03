@@ -1,19 +1,14 @@
-# Project Name
+# workspace-lifecycle
 
-<!-- Replace the title above, fill in each section, and delete these comments when done. -->
-
-<!--
-One-time repo settings (not controlled by files in this template):
-- Enable GitHub Discussions under Settings → General → Features.
-  CONTRIBUTING.md, SUPPORT.md, and the issue template config all link
-  to Discussions as the place to ask questions; those links 404 until
-  this is turned on.
--->
-
-[![CI](https://github.com/your-org/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/your-repo/actions/workflows/ci.yml)
+[![CI](https://github.com/mathieusouflis/workspace-lifecycle/actions/workflows/ci.yml/badge.svg)](https://github.com/mathieusouflis/workspace-lifecycle/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-One-paragraph description of what this project does and who it is for.
+A CLI that manages the lifecycle of local development projects: it scans for
+projects that have gone stale, lets you decide what to do about each one, and
+only archives a project once a set of safety checks confirms it's actually
+safe to lose. It also sets up new projects with self-contained, isolated
+dependencies from day one, so nothing leaks into the rest of the machine for
+archiving to clean up later.
 
 ---
 
@@ -30,15 +25,24 @@ One-paragraph description of what this project does and who it is for.
 
 ## Overview
 
-Describe the problem this project solves, its main features, and any key design decisions worth highlighting upfront.
+Development machines accumulate state faster than anyone cleans it up — stale
+projects, orphaned containers, global packages nobody remembers installing.
+`workspace-lifecycle` splits the fix into three separate stages: a scanner
+**notices** what's gone stale, you **decide** what to do about it, and only
+after that decision does the tool **execute** it — never automatically.
+Archiving (the one irreversible step) only happens once a set of safety
+checks confirms it's actually safe, with stricter checks for anything
+unrecoverable and softer, overridable checks for anything merely
+inconvenient. New projects also start fully isolated (no global package/tool
+leakage), so there's nothing left over for archiving to clean up later.
 
 ---
 
 ## Getting Started
 
 ```bash
-git clone https://github.com/your-org/your-repo.git
-cd your-repo
+git clone https://github.com/mathieusouflis/workspace-lifecycle.git
+cd workspace-lifecycle
 ./bin/mat setup   # Git hooks, .env, dev shell (Nix/direnv/devenv), repo config
 ```
 
@@ -50,13 +54,14 @@ Full setup guide (prerequisites, dependency install, dev server): [docs/product-
 
 ## Architecture
 
-<!-- Once this project has a real shape, replace the pointer below with a one-paragraph summary and keep the link for detail. -->
-
-See [docs/product-code/concept/todo_architecture-overview](docs/product-code/concept/todo_architecture-overview.md) — template placeholder, not yet filled in.
+The tool is built around three separate stages — detection, decision, and
+execution — kept deliberately independent so an irreversible action (archiving
+a project) can never happen without an explicit human decision in between.
+See [docs/product-code/concept/architecture-overview](docs/product-code/concept/architecture-overview.md) for the full breakdown and [docs/product-code/decisions/0001-separate-detection-decision-execution](docs/product-code/decisions/0001-separate-detection-decision-execution.md) for why.
 
 ```
 .
-├── src/           # Source code
+├── src/           # Source code (Rust)
 ├── docs/          # Documentation — organized by domain × type, see docs/README.md
 └── .github/       # GitHub configuration
 ```

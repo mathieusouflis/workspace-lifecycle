@@ -1,7 +1,7 @@
 ---
 domain: operations
 type: concept
-owner: <!-- team/role that owns CI/CD -->
+owner: maintainer
 last_reviewed:
 ---
 

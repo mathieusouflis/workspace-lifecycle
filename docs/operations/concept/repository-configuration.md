@@ -1,7 +1,7 @@
 ---
 domain: operations
 type: concept
-owner: <!-- team/role that owns repository configuration -->
+owner: maintainer
 last_reviewed:
 ---
 

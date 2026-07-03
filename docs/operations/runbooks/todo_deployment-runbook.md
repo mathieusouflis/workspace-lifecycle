@@ -2,7 +2,7 @@
 domain: operations
 type: runbook
 status: todo
-owner:
+owner: maintainer
 last_exercised:
 ---
 

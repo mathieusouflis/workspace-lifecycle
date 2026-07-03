@@ -30,12 +30,12 @@ This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.
 1. **Fork** the repository on GitHub
 2. **Clone** your fork locally:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/your-username/workspace-lifecycle.git
+   cd workspace-lifecycle
    ```
 3. **Add the upstream remote:**
    ```bash
-   git remote add upstream https://github.com/your-org/your-repo.git
+   git remote add upstream https://github.com/mathieusouflis/workspace-lifecycle.git
    ```
 4. Run `./bin/mat setup` (native Windows without WSL2: `.\bin\mat.ps1`) — activates the Git hooks (validates commit messages locally before you push), creates `.env` from `.env.example`, and sets up the reproducible dev shell (Nix/direnv/devenv). See [docs/team-process/how-to/activate-git-hooks](docs/team-process/how-to/activate-git-hooks.md) for what the hooks do.
 5. Follow the full setup guide: [docs/product-code/tutorials/getting-started](docs/product-code/tutorials/getting-started.md)
@@ -136,7 +136,7 @@ Enforced automatically both locally (if hooks are activated) and in CI — see [
 5. **Address review comments** — don't force-merge, iterate on feedback
 6. **Squash or rebase** before merge if history is messy
 
-PRs are merged by maintainers once they have one approving review and all checks are green — see [docs/organizational/reference/todo_tool-inventory](docs/organizational/reference/todo_tool-inventory.md) / [.github/CODEOWNERS](.github/CODEOWNERS) for who that is on this project.
+This project has a single maintainer, so there's no second-reviewer requirement — a green CI run is the merge gate. The maintainer still reviews every PR before merging.
 
 ---
 
@@ -154,4 +154,4 @@ Every PR should maintain or improve the existing test coverage.
 
 ## Questions?
 
-Open a [Discussion](../../discussions).
+Open an [issue](../../issues) — this project doesn't use GitHub Discussions.

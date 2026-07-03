@@ -16,4 +16,9 @@ else
   export GITHUB_TOKEN
 fi
 
-terraform -chdir="$SCRIPT_DIR" "$@"
+if [ "${1:-}" = "apply" ]; then
+  shift
+  terraform -chdir="$SCRIPT_DIR" apply -auto-approve "$@"
+else
+  terraform -chdir="$SCRIPT_DIR" "$@"
+fi

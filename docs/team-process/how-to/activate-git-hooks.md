@@ -1,7 +1,7 @@
 ---
 domain: team-process
 type: how-to
-owner: <!-- team/role that owns tooling -->
+owner: maintainer
 last_reviewed:
 ---
 
