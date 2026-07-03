@@ -11,6 +11,13 @@
     pkgs.shfmt
   ];
 
+  # https://devenv.sh/languages/rust/
+  languages.rust = {
+    enable = true;
+    channel = "stable";
+    components = [ "rustc" "cargo" "clippy" "rustfmt" "rust-analyzer" ];
+  };
+
   # https://devenv.sh/scripts/
   # Thin wrapper so the real CLI lives in a plain, dependency-free script
   # (bin/mat) that also runs standalone before this shell exists.
@@ -25,7 +32,7 @@
   enterShell = ''
     clear
     echo "$(tput bold)✨ Welcome, $(whoami)!$(tput sgr0) — $(basename "$DEVENV_ROOT") dev shell"
-    echo "   Tools: git · gh · terraform · jq · shellcheck · shfmt"
+    echo "   Tools: git · gh · terraform · jq · shellcheck · shfmt · rust (cargo/clippy/rustfmt/rust-analyzer)"
     echo "   First time here? Run: mat setup"
   '';
 
