@@ -4,11 +4,13 @@
 #
 # Keep this hook fast — slow hooks get bypassed. Tests and build run in CI.
 
-echo "Running cargo fmt --check..."
-cargo fmt --check || exit 1
+if [ -f Cargo.toml ]; then
+  echo "Running cargo fmt --check..."
+  cargo fmt --check || exit 1
 
-echo "Running cargo clippy..."
-cargo clippy --all-targets --all-features -- -D warnings || exit 1
+  echo "Running cargo clippy..."
+  cargo clippy --all-targets --all-features -- -D warnings || exit 1
+fi
 
 # ── Documentation TODOs ─────────────────────────────────────────────────
 # Non-blocking: lists template placeholder docs (docs/**/todo_*.md) that
